@@ -938,4 +938,220 @@ footer {
     font-size: 15px;
     padding: 12px 18px;
   }
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --bleu: #1A1F71;
+  --violet: #7F00FF;
+  --turquoise: #00D2FF;
+  --violet-clair: #BA9FF5;
+  --blanc: #FFFFFF;
+  --noir: #000000;
+  --bleu-dark: #0d1147;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  color: var(--blanc);
+  background: #07091e;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ===== FOND ANIMÉ ===== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 600px 500px at -10% 10%, rgba(127, 0, 255, 0.25) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 400px at 110% 90%, rgba(0, 210, 255, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 300px at 50% 60%, rgba(26, 31, 113, 0.5) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+/* ===== MAIN ===== */
+main {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 80px 24px 60px;
+}
+
+/* ===== SECTION MENTIONS LÉGALES ===== */
+.mentions-legales {
+  width: 100%;
+  max-width: 760px;
+  animation: fadeInUp 0.7s ease both;
+}
+
+/* ===== TITRE PRINCIPAL ===== */
+.mentions-legales > h1 {
+  font-size: clamp(28px, 6vw, 52px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  margin-bottom: 48px;
+  background: linear-gradient(90deg, var(--blanc) 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+.mentions-legales > h1::after {
+  content: '';
+  display: block;
+  margin-top: 16px;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--violet), var(--turquoise));
+  border-radius: 2px;
+}
+
+/* ===== BLOCS DE SECTION ===== */
+.mentions-legales h2 {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--turquoise);
+  margin-bottom: 14px;
+  margin-top: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mentions-legales h2::before {
+  content: counter(section, decimal-leading-zero);
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: rgba(0, 210, 255, 0.45);
+  letter-spacing: 1px;
+}
+
+.mentions-legales {
+  counter-reset: section;
+}
+
+.mentions-legales h2 {
+  counter-increment: section;
+}
+
+/* ===== PARAGRAPHES ===== */
+.mentions-legales p {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 2px solid rgba(127, 0, 255, 0.5);
+  border-radius: 0 12px 12px 0;
+  padding: 18px 22px;
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(6px);
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.mentions-legales p:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-left-color: var(--turquoise);
+}
+
+/* ===== LIEN INTERNE ===== */
+.mentions-legales a {
+  color: var(--turquoise);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0, 210, 255, 0.35);
+  transition: border-color 0.3s, color 0.3s;
+  padding-bottom: 1px;
+}
+
+.mentions-legales a:hover {
+  color: white;
+  border-color: white;
+}
+
+/* ===== RETOUR EN HAUT / LIEN RETOUR ===== */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  transition: color 0.3s, gap 0.3s;
+}
+
+.back-link:hover {
+  color: var(--turquoise);
+  gap: 12px;
+}
+
+.back-link::before {
+  content: '←';
+  font-size: 14px;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (min-width: 600px) {
+  main {
+    padding: 100px 40px 80px;
+  }
+
+  .mentions-legales p {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  main {
+    padding: 120px 60px 100px;
+  }
+}
 }
